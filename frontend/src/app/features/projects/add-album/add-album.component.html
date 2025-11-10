@@ -1,0 +1,129 @@
+<div class="form-container">
+  <div class="form-header">
+    <div class="form-header-content">
+      <div class="form-icon">
+        <i class="bi bi-plus-circle-fill"></i>
+      </div>
+      <div>
+        <h1 class="form-title">Ajouter un Album</h1>
+        <p class="form-subtitle">Ajoutez un nouvel album à votre collection</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-card">
+    <div class="info-box">
+      <i class="bi bi-info-circle-fill"></i>
+      <div>
+        <strong class="text-danger">Information :</strong>
+        Tous les champs marqués d'un astérisque
+        <span class="required">*</span> sont obligatoires.
+      </div>
+    </div>
+
+    <form id="albumForm" (ngSubmit)="addAlbum()">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="form-label">
+              <i class="bi bi-music-note-beamed"></i>
+              Nom de l'Album <span class="required">*</span>
+            </label>
+            <div class="input-with-icon">
+              <i class="input-icon bi bi-music-note-beamed"></i>
+              <input type="text" class="form-control"
+                     name="nomAlbum" [(ngModel)]="newAlbum.nomAlbum"
+                     placeholder="Ex: Thriller, Abbey Road..."
+                     required>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="form-label">
+              <i class="bi bi-palette"></i>
+              Genre Musical <span class="required">*</span>
+            </label>
+            <select class="form-select"
+                    name="genre" [(ngModel)]="newAlbum.genre"
+                    required>
+              <option value="" disabled selected>Sélectionnez un genre</option>
+              <option value="Rock">🎸 Rock</option>
+              <option value="Pop">🎤 Pop</option>
+              <option value="Jazz">🎺 Jazz</option>
+              <option value="Classical">🎻 Classical</option>
+              <option value="Electronic">🎹 Electronic</option>
+              <option value="R&B">🎵 R&B</option>
+              <option value="Hip-Hop">🎧 Hip-Hop</option>
+              <option value="Country">🤠 Country</option>
+              <option value="Reggae">🌴 Reggae</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="form-label">
+              <i class="bi bi-calendar-event"></i>
+              Date de Sortie <span class="required">*</span>
+            </label>
+            <div class="input-with-icon">
+              <i class="input-icon bi bi-calendar3"></i>
+              <input type="date" class="form-control"
+                     name="dateSortie" [(ngModel)]="newAlbum.dateSortie"
+                     required>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="form-label">
+              <i class="bi bi-collection"></i>
+              Nombre de Chansons <span class="required">*</span>
+            </label>
+            <div class="input-with-icon">
+              <i class="input-icon bi bi-collection"></i>
+              <input type="number" class="form-control"
+                     name="nbChansons" [(ngModel)]="newAlbum.nbChansons"
+                     placeholder="Ex: 10, 15, 20..." min="1"
+                     required>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="form-label">
+              <i class="bi bi-person-music"></i>
+              Artiste <span class="required">*</span>
+            </label>
+          <select class="form-select"
+          name="idArtiste" [(ngModel)]="newIdArtiste"
+          required>
+          <option [ngValue]="null" disabled selected>Sélectionnez un artiste</option>
+          <option *ngFor="let art of Artistes" [ngValue]="art.idArtiste">
+            {{ art.nomArtiste }}
+          </option>
+          </select>
+          </div>
+        </div>
+      </div>
+      <div class="btn-group-custom mt-3">
+        <button type="submit" class="btn-custom btn-primary-custom">
+          <i class="bi bi-check-circle"></i> Ajouter l'Album
+        </button>
+        <button type="reset" class="btn-custom btn-reset-custom">
+          <i class="bi bi-arrow-clockwise"></i> Réinitialiser
+        </button>
+        <button type="button" class="btn-custom btn-secondary-custom"
+                (click)="router.navigate(['/albums'])">
+          <i class="bi bi-x-circle"></i> Annuler
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

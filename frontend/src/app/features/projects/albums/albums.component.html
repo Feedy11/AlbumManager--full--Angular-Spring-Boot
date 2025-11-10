@@ -1,0 +1,175 @@
+<div class="albums-container">
+  <div class="albums-header">
+    <div class="albums-header-content">
+      <div>
+        <h1 class="albums-title">
+          <i class="bi bi-vinyl-fill"></i>
+          Liste des Albums
+        </h1>
+        <p class="albums-subtitle">Gérez votre collection musicale</p>
+      </div>
+      @if(authService.isAdmin()) {
+      <button
+        class="btn-header btn-add"
+        routerLink="/add-album"
+        routerLinkActive="active"
+      >
+        <i class="bi bi-plus-lg"></i>
+        Ajouter</button
+      >}
+    </div>
+  </div>
+  <div class="search-filter-bar">
+    <div class="row g-3">
+      <div class="col-md-6">
+        <div class="search-box">
+          <i class="bi bi-search search-icon"></i>
+          <input
+            type="text"
+            class="search-input"
+            placeholder="Rechercher..."
+            [(ngModel)]="searchTerm"
+            (keyup)="onSearch()"
+          />
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <select class="filter-select form-select">
+          <option selected>Tous les genres</option>
+          <option>Rock</option>
+          <option>Pop</option>
+          <option>Jazz</option>
+        </select>
+      </div>
+      <div class="col-md-3">
+        <select class="filter-select form-select">
+          <option selected>Trier par</option>
+          <option>Date récente</option>
+          <option>Nom (A-Z)</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="albums-card">
+    <div class="albums-card-header">
+      <div class="albums-count">
+        <i class="bi bi-disc"></i>
+        Albums
+        <span class="badge">{{ albums.length }}</span>
+      </div>
+    </div>
+
+    <div class="albums-card-body">
+      <table class="albums-table" *ngIf="albums.length > 0">
+        <thead class="table-gradient">
+          <tr class="trr">
+            <th>Numéro</th>
+            <th>ID</th>
+            <th>Album</th>
+            <th>Genre</th>
+            <th>Date</th>
+            <th>Chansons</th>
+            <th>Artiste</th>
+            <th class="hide-mobile">Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <ng-container
+            *ngFor="
+              let album of albums;
+              let index = index;
+              let first = first;
+              let count = count
+            "
+          >
+            <tr *ngIf="first">
+              <td colspan="8" class="text-right py-3">
+                <h5
+                  class="text-light bg-gradient rounded-pill d-inline-block px-4 py-2"
+                >
+                  Nombre total d'albums : {{ count }}
+                </h5>
+              </td>
+            </tr>
+            <tr>
+              <td>{{ index + 1 }}</td>
+              <td>
+                <span class="album-id">#{{ album.idAlbum }}</span>
+              </td>
+
+              <td>
+                <div class="album-name">
+                  <div
+                    class="album-icon"
+                    style="
+                      background: linear-gradient(135deg, #6c63ff, #ff007f);
+                    "
+                  >
+                    <i class="bi bi-music-note"></i>
+                  </div>
+                  <span>{{ album.nomAlbum }}</span>
+                </div>
+              </td>
+
+              <td>
+                <span class="genre-badge">{{ album.genre }}</span>
+              </td>
+
+              <td>
+                <div class="date-cell">
+                  <i class="bi bi-calendar3"></i>
+                  <span>{{ album.dateSortie | date : "dd/MM/yyyy" }}</span>
+                </div>
+              </td>
+
+              <td>
+                <div class="songs-count">
+                  <i class="bi bi-music-note-beamed"></i>
+                  <span>{{ album.nbChansons }}</span>
+                </div>
+              </td>
+              <td>
+                <div class="artist-cell">
+                  <i class="bi bi-person-music"></i>
+                  <span>{{ album.artiste.nomArtiste }}</span>
+                </div>
+              </td>
+              <td class="hide-mobile">
+                <div class="action-buttons">
+                  <button class="btn-action btn-view" title="Voir">
+                    <i class="bi bi-eye"></i>
+                  </button>
+
+                  @if(authService.isAdmin()) {
+                  <button
+                    class="btn-action btn-edit"
+                    [routerLink]="['/updateAlbum', album.idAlbum]"
+                    title="Modifier"
+                  >
+                    <i class="bi bi-pencil"></i>
+                  </button>
+                  } @if(authService.isAdmin()) {
+                  <button
+                    class="btn-action btn-delete"
+                    title="Supprimer"
+                    (click)="supprimerAlbum(album)"
+                  >
+                    <i class="bi bi-trash"></i>
+                  </button>
+                  }
+                </div>
+              </td>
+            </tr>
+          </ng-container>
+          <tr *ngIf="albums.length === 0">
+            <td colspan="8">
+              <h1 class="empty">Aucun album trouvé !</h1>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

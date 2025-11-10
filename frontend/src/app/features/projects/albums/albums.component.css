@@ -1,0 +1,396 @@
+        body {
+            background: #1a1d29;
+            min-height: 100vh;
+            padding: 2rem 0;
+        }
+
+        .albums-container {
+            max-width: 1450px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+
+
+        .table-gradient th {
+          width: 1000px;
+
+          }
+
+
+        /* Header */
+        .albums-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3);
+
+        }
+
+        .albums-header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .albums-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .albums-title i {
+            font-size: 2rem;
+        }
+
+        .albums-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            margin: 0.5rem 0 0 0;
+            font-size: 1rem;
+        }
+
+        .btn-header {
+            padding: 0.7rem 1.3rem;
+            font-weight: 600;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-add {
+            background: white;
+            color: #667eea;
+        }
+
+        .btn-add:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Search Bar */
+        .search-filter-bar {
+            background: #242938;
+            border-radius: 12px;
+            padding: 1.2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.7rem 1rem 0.7rem 2.8rem;
+            background: #1a1d29;
+            border: 2px solid #3a3f52;
+            border-radius: 8px;
+            color: white;
+            font-size: 0.95rem;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+        }
+
+        .search-input::placeholder {
+            color: #8b92a7;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #667eea;
+            font-size: 1.1rem;
+        }
+
+        .filter-select {
+            padding: 0.7rem 1rem;
+            background: #1a1d29;
+            border: 2px solid #3a3f52;
+            border-radius: 8px;
+            color: white;
+            font-size: 0.95rem;
+        }
+
+        .filter-select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+        }
+
+        /* Table Card */
+        .albums-card {
+            background: #242938;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .albums-card-header {
+            padding: 1.2rem 1.5rem;
+            background: rgba(102, 126, 234, 0.1);
+            border-bottom: 1px solid #3a3f52;
+        }
+
+        .albums-count {
+            font-size: 1rem;
+            font-weight: 600;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .albums-count .badge {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            padding: 0.3rem 0.7rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        .albums-card-body {
+            overflow-x: auto;
+
+        }
+
+        /* Table */
+        .albums-table {
+            width: 100%;
+            margin: 0;
+        }
+
+        .albums-table thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .albums-table thead th {
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+            padding: 1rem 1.2rem;
+            border: none;
+            white-space: nowrap;
+        }
+
+        .albums-table tbody tr {
+            transition: all 0.3s ease;
+            border-bottom: 1px solid #3a3f52;
+        }
+
+        .albums-table tbody tr:hover {
+            background: rgba(102, 126, 234, 0.08);
+        }
+
+        .albums-table tbody td {
+            padding: 1rem 1.2rem;
+            color: #e2e8f0;
+            font-size: 0.9rem;
+            vertical-align: middle;
+        }
+
+        /* Cell Styles */
+        .album-id {
+            font-weight: 700;
+            color: #667eea;
+            background: rgba(102, 126, 234, 0.15);
+            padding: 0.3rem 0.7rem;
+            border-radius: 6px;
+            display: inline-block;
+        }
+
+        .album-name {
+            font-weight: 600;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .album-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .genre-badge {
+            padding: 0.4rem 0.9rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .genre-rock { background: #e74c3c; color: white; }
+        .genre-pop { background: #3498db; color: white; }
+        .genre-jazz { background: #2ecc71; color: white; }
+        .genre-classical { background: #f39c12; color: white; }
+        .genre-electronic { background: #9b59b6; color: white; }
+        .genre-hip-hop { background: #667eea; color: white; }
+
+        .date-cell {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: #8b92a7;
+        }
+
+        .date-cell i {
+            color: #667eea;
+            font-size: 0.95rem;
+        }
+
+        .songs-count {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: rgba(102, 126, 234, 0.15);
+            padding: 0.4rem 0.8rem;
+            border-radius: 8px;
+            font-weight: 600;
+            color: white;
+        }
+
+        .songs-count i {
+            color: #667eea;
+            font-size: 1rem;
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 0.4rem;
+        }
+
+        .btn-action {
+            width: 34px;
+            height: 34px;
+            border-radius: 6px;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .btn-view {
+            background: rgba(52, 152, 219, 0.2);
+            color: #3498db;
+        }
+
+        .btn-view:hover {
+            background: #3498db;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .btn-edit {
+            background: rgba(155, 89, 182, 0.2);
+            color: #9b59b6;
+        }
+
+        .btn-edit:hover {
+            background: #9b59b6;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .btn-delete {
+            background: rgba(231, 76, 60, 0.2);
+            color: #e74c3c;
+        }
+
+        .btn-delete:hover {
+            background: #e74c3c;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        /* Responsive */
+        @media (max-width: 991.98px) {
+            .albums-header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .albums-title {
+                font-size: 1.5rem;
+                justify-content: center;
+            }
+
+            .search-filter-bar .row {
+                row-gap: 0.8rem;
+            }
+        }
+
+        @media (max-width: 767.98px) {
+            .albums-header {
+                padding: 1.5rem;
+            }
+
+            .albums-title {
+                font-size: 1.3rem;
+            }
+
+            .albums-table thead th,
+            .albums-table tbody td {
+                padding: 0.8rem;
+                font-size: 0.85rem;
+            }
+
+            .album-name {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hide-mobile {
+                display: none;
+
+            }
+
+            .albums-table thead th,
+            .albums-table tbody td {
+                padding: 0.7rem 0.5rem;
+            }
+        }
+        .empty {
+            font-size: 1.5rem;
+            color: white;
+            text-align: center;
+            margin-top: 2rem;
+
+        }

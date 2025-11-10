@@ -1,0 +1,323 @@
+   body {
+            background: #1a1d29;
+            min-height: 100vh;
+            padding: 2rem 0;
+        }
+
+        .form-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Header */
+        .form-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3);
+        }
+
+        .form-header-content {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .form-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .form-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            margin: 0;
+        }
+
+        .form-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        /* Form Card */
+        .form-card {
+            background: #242938;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid #3a3f52;
+        }
+
+        .section-title i {
+            color: #667eea;
+            font-size: 1.2rem;
+        }
+
+        /* Form Groups */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            color: #e2e8f0;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .form-label i {
+            color: #667eea;
+            font-size: 1rem;
+        }
+
+        .required {
+            color: #e74c3c;
+            margin-left: 0.2rem;
+        }
+
+        .form-control,
+        .form-select {
+            background: #1a1d29;
+            border: 2px solid #3a3f52;
+            border-radius: 10px;
+            color: white;
+            padding: 0.8rem 1rem;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            background: #1a1d29;
+            border-color: #667eea;
+            color: white;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+            outline: none;
+        }
+
+        .form-control::placeholder {
+            color: #8b92a7;
+        }
+
+        .form-select option {
+            background: #242938;
+            color: white;
+        }
+
+        /* Input Icons */
+        .input-with-icon {
+            position: relative;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #667eea;
+            font-size: 1.1rem;
+            pointer-events: none;
+        }
+
+        .input-with-icon .form-control {
+            padding-left: 2.8rem;
+        }
+
+        /* Buttons */
+        .btn-group-custom {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px solid #3a3f52;
+        }
+
+        .btn-custom {
+            padding: 0.9rem 2rem;
+            font-weight: 600;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+            flex: 1;
+            justify-content: center;
+        }
+
+        .btn-primary-custom {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .btn-primary-custom:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary-custom {
+            background: transparent;
+            color: #e2e8f0;
+            border: 2px solid #3a3f52;
+        }
+
+        .btn-secondary-custom:hover {
+            background: #3a3f52;
+            border-color: #667eea;
+            color: white;
+        }
+
+        .btn-reset-custom {
+            background: rgba(231, 76, 60, 0.1);
+            color: #e74c3c;
+            border: 2px solid rgba(231, 76, 60, 0.3);
+        }
+
+        .btn-reset-custom:hover {
+            background: #e74c3c;
+            color: white;
+            border-color: #e74c3c;
+        }
+
+        /* Info Box */
+        .info-box {
+            background: rgba(102, 126, 234, 0.1);
+            border-left: 4px solid #667eea;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            color: #e2e8f0;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: start;
+            gap: 0.8rem;
+        }
+
+        .info-box i {
+            color: #667eea;
+            font-size: 1.2rem;
+            margin-top: 0.2rem;
+        }
+
+        /* Genre Chips Preview */
+        .genre-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .genre-chip {
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .genre-chip.rock { background: rgba(231, 76, 60, 0.2); color: #e74c3c; }
+        .genre-chip.pop { background: rgba(52, 152, 219, 0.2); color: #3498db; }
+        .genre-chip.jazz { background: rgba(46, 204, 113, 0.2); color: #2ecc71; }
+        .genre-chip.classical { background: rgba(243, 156, 18, 0.2); color: #f39c12; }
+        .genre-chip.electronic { background: rgba(155, 89, 182, 0.2); color: #9b59b6; }
+
+        .genre-chip:hover {
+            transform: scale(1.05);
+            border-color: currentColor;
+        }
+
+        /* Responsive */
+        @media (max-width: 767.98px) {
+            .form-header {
+                padding: 1.5rem;
+            }
+
+            .form-title {
+                font-size: 1.4rem;
+            }
+
+            .form-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+
+            .form-card {
+                padding: 1.5rem;
+            }
+
+            .btn-group-custom {
+                flex-direction: column;
+            }
+
+            .btn-custom {
+                width: 100%;
+            }
+        }
+
+        /* Animation */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .form-card {
+            animation: slideIn 0.5s ease;
+        }
+
+        /* Success Message */
+        .success-message {
+            background: rgba(46, 204, 113, 0.1);
+            border-left: 4px solid #2ecc71;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            color: #2ecc71;
+            display: none;
+        }
+
+        .success-message.show {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            animation: slideIn 0.5s ease;
+        }
+
+        .success-message i {
+            font-size: 1.5rem;
+        }

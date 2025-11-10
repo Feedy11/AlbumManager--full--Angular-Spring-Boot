@@ -1,0 +1,169 @@
+<div class="form-container">
+  <div class="form-header">
+    <div class="form-header-content">
+      <div class="form-icon">
+        <i class="bi bi-pencil-square"></i>
+      </div>
+      <div>
+        <h1 class="form-title">Mettre à jour l'Album</h1>
+        <p class="form-subtitle">Modifiez les informations de votre album</p>
+      </div>
+    </div>
+  </div>
+  <div class="form-card">
+    <div class="info-box">
+      <i class="bi bi-info-circle-fill"></i>
+      <div>
+        <strong class="text-danger">Information :</strong>
+        Tous les champs marqués d'un astérisque
+        <span class="required">*</span> sont obligatoires.
+      </div>
+    </div>
+
+    <form id="updateAlbumForm" (ngSubmit)="updateAlbum()">
+      <div hidden class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>ID Album</label>
+            <input
+              type="text"
+              class="form-control"
+              name="idAlbum"
+              [(ngModel)]="currentAlbum.idAlbum"
+            >
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="form-label">
+              <i class="bi bi-music-note-beamed"></i>
+              Nom de l'Album <span class="required">*</span>
+            </label>
+            <div class="input-with-icon">
+              <i class="input-icon bi bi-music-note-beamed"></i>
+              <input
+                type="text"
+                class="form-control"
+                name="nomAlbum"
+                [(ngModel)]="currentAlbum.nomAlbum"
+                placeholder="Ex: Thriller, Abbey Road..."
+                required
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="form-label">
+              <i class="bi bi-palette"></i>
+              Genre Musical <span class="required">*</span>
+            </label>
+            <select
+              class="form-select"
+              name="genre"
+              [(ngModel)]="currentAlbum.genre"
+              required
+            >
+              <option value="" disabled selected>Sélectionnez un genre</option>
+              <option value="Rock">🎸 Rock</option>
+              <option value="Pop">🎤 Pop</option>
+              <option value="Jazz">🎺 Jazz</option>
+              <option value="Classical">🎻 Classical</option>
+              <option value="Electronic">🎹 Electronic</option>
+              <option value="R&B">🎵 R&B</option>
+              <option value="Hip-Hop">🎧 Hip-Hop</option>
+              <option value="Country">🤠 Country</option>
+              <option value="Reggae">🌴 Reggae</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="form-label">
+              <i class="bi bi-calendar-event"></i>
+              Date de Sortie <span class="required">*</span>
+            </label>
+            <div class="input-with-icon">
+              <i class="input-icon bi bi-calendar3"></i>
+              <input
+                type="date"
+                class="form-control"
+                name="dateSortie"
+                [(ngModel)]="currentAlbum.dateSortie"
+                required
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="form-label">
+              <i class="bi bi-collection"></i>
+              Nombre de Chansons <span class="required">*</span>
+            </label>
+            <div class="input-with-icon">
+              <i class="input-icon bi bi-collection"></i>
+              <input
+                type="number"
+                class="form-control"
+                name="nbChansons"
+                [(ngModel)]="currentAlbum.nbChansons"
+                placeholder="Ex: 10, 15, 20..."
+                min="1"
+                required
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="form-label">
+              <i class="bi bi-person-music"></i>
+              Artiste <span class="required">*</span>
+            </label>
+    <select
+  class="form-select"
+  name="idArtiste"
+  [(ngModel)]="UpdatedArtisteId"
+  required
+>
+  <option [ngValue]="null" disabled selected>
+    Sélectionnez un artiste
+  </option>
+  <option *ngFor="let art of Artistes" [ngValue]="art.idArtiste">
+    {{ art.nomArtiste }}
+  </option>
+</select>
+
+          </div>
+        </div>
+      </div>
+      <div class="btn-group-custom">
+        <button type="submit" class="btn-custom btn-primary-custom">
+          <i class="bi bi-check-circle"></i> Mettre à jour l'Album
+        </button>
+
+        <button type="reset" class="btn-custom btn-reset-custom">
+          <i class="bi bi-arrow-clockwise"></i> Réinitialiser
+        </button>
+
+        <button
+          type="button"
+          class="btn-custom btn-secondary-custom"
+          (click)="cancelUpdate()"
+        >
+          <i class="bi bi-x-circle"></i> Annuler
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>

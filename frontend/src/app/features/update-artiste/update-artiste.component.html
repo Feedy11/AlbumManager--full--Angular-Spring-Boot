@@ -1,0 +1,56 @@
+<form>
+  <div class="info-badge" *ngIf="!ajout">
+    <i class="bi bi-info-circle-fill"></i>
+    <span>Vous êtes en mode <strong>modification</strong>. L'ID ne peut pas être changé.</span>
+  </div>
+
+  <div class="info-badge" *ngIf="ajout">
+    <i class="bi bi-plus-circle-fill"></i>
+    <span>Remplissez le formulaire pour <strong>ajouter</strong> un nouvel artiste.</span>
+  </div>
+
+  <div class="form-group" [hidden]="ajout">
+    <label class="form-label">
+      <i class="bi bi-hash"></i>
+      ID Artiste
+    </label>
+    <input
+      type="text"
+      [(ngModel)]="artiste.idArtiste"
+      name="idArtiste"
+      class="form-control-custom"
+      disabled>
+  </div>
+
+  <div class="form-group">
+    <label class="form-label">
+      <i class="bi bi-person"></i>
+      Nom de l'Artiste
+    </label>
+    <input
+      type="text"
+      [(ngModel)]="artiste.nomArtiste"
+      name="nomArtiste"
+      class="form-control-custom"
+      placeholder="Ex: The Weeknd, Drake..."
+      [class.is-invalid]="!artiste.nomArtiste">
+  </div>
+
+  <button
+    type="submit"
+    [disabled]="!artiste.nomArtiste"
+    class="btn-form-submit"
+    (click)="saveArtiste()">
+    <i class="bi" [ngClass]="ajout ? 'bi-plus-circle' : 'bi-check-circle'"></i>
+    {{ ajout ? 'Ajouter l\'Artiste' : 'Modifier l\'Artiste' }}
+  </button>
+
+  <button
+    type="button"
+    class="btn-form-cancel"
+    *ngIf="!ajout"
+    (click)="cancelEdit()">
+    <i class="bi bi-x-circle"></i>
+    Annuler
+  </button>
+</form>

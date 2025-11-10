@@ -1,0 +1,91 @@
+<div class="animated-bg"></div>
+
+<div class="auth-container">
+  <div class="auth-card-container-center">
+    <div class="row g-0">
+      <div class="col-lg-7">
+        <div class="auth-right-panel container-ce">
+          <div class="auth-form-container">
+            <div class="auth-header">
+              <div class="auth-logo">
+                <i class="bi bi-person-circle"></i>
+              </div>
+              <h2 class="auth-title">Bon retour !</h2>
+              <p class="auth-subtitle">
+                Connectez-vous pour accéder à votre compte
+              </p>
+            </div>
+
+            @if(erreur == 1) {
+              <div class="alert alert-danger" role="alert">
+                <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                <strong>Login ou mot de passe incorrect !</strong>
+              </div>
+            }
+            <form>
+              <div class="form-group">
+                <label class="form-label">
+                  <i class="bi bi-person"></i> Nom d'utilisateur
+                </label>
+                <div class="input-group-custom">
+                  <i class="input-icon bi bi-person"></i>
+                  <input
+                    type="text"
+                    name="username"
+                    class="form-control-custom"
+                    placeholder="Entrez votre nom"
+                    [(ngModel)]="user.username"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">
+                  <i class="bi bi-lock"></i> Mot de passe
+                </label>
+                <div class="input-group-custom">
+                  <i class="input-icon bi bi-lock"></i>
+                  <input
+                    type="password"
+                    name="password"
+                    class="form-control-custom"
+                    placeholder="••••••••"
+                    [(ngModel)]="user.password"
+                    id="loginPassword"
+                    required
+                  />
+                  <button
+                    type="button"
+                    class="password-toggle"
+                    onclick="togglePassword('loginPassword')"
+                  >
+                    <i class="bi bi-eye"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="form-check-custom">
+                  <input type="checkbox" id="rememberMe" />
+                  <label for="rememberMe">Se souvenir de moi</label>
+                </div>
+              </div>
+              <button
+                type="button"
+                (click)="onLoggedin()"
+                class="btn-primary-custom mt-4"
+              >
+                <i class="bi bi-box-arrow-in-right"></i> Se connecter
+              </button>
+            </form>
+
+            <div class="auth-link">
+              Pas encore de compte ?
+              <a routerLink="/register">S'inscrire</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

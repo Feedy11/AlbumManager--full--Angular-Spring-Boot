@@ -1,0 +1,90 @@
+<div class="artistes-container">
+  <div class="artistes-header">
+    <h1 class="artistes-title">
+      <i class="bi bi-people-fill"></i>
+      Gestion des Artistes
+    </h1>
+    <p class="artistes-subtitle">Ajoutez et gérez vos artistes musicaux</p>
+  </div>
+
+  <div class="artistes-layout">
+
+    @if(authService.isAdmin()) {
+    <div class="form-card">
+      <div class="form-card-header">
+        <div class="form-card-icon">
+          <i class="bi bi-person-plus-fill"></i>
+        </div>
+        <h3 class="form-card-title">Formulaire Artiste</h3>
+      </div>
+
+      <app-update-artiste
+        [artiste]="updateArtiste"
+        (artisteUpdated)="artisteUpdated($event)"
+        [ajout]="ajout">
+      </app-update-artiste>
+    </div>
+    }
+
+    <div class="table-card">
+      <div class="table-card-header">
+        <div class="table-card-count">
+          <i class="bi bi-music-note-list"></i>
+          Liste des Artistes
+          <span class="badge">{{ artistes.length || 0 }}</span>
+        </div>
+      </div>
+
+      <div class="table-card-body">
+        <table class="artistes-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Artiste</th>
+              @if(authService.isAdmin()) {
+              <th>Actions</th>
+              }
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let art of artistes; trackBy: trackById">
+              <td>
+                <span class="artiste-id">#{{ art.idArtiste }}</span>
+              </td>
+
+              <td>
+                <div class="artiste-name">
+                  <div class="artiste-icon">
+                    <i class="bi bi-person-circle"></i>
+                  </div>
+                  <span>{{ art.nomArtiste }}</span>
+                </div>
+              </td>
+
+              @if(authService.isAdmin()) {
+              <td>
+                <button class="btn-edit-table" (click)="updateArtisteMethod(art)">
+                  <i class="bi bi-pencil-square"></i> Éditer
+                </button>
+              </td>
+              }
+            </tr>
+
+            <tr *ngIf="artistes.length === 0">
+              <td colspan="3" class="empty-state">
+                <div class="empty-content">
+                  <i class="bi bi-inbox"></i>
+                  <h3>Aucun artiste trouvé</h3>
+                  <p>Ajoutez votre premier artiste pour commencer</p>
+                </div>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
