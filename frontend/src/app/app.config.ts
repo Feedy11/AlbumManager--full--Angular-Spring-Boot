@@ -3,13 +3,14 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideToastr } from 'ngx-toastr';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { authInterceptor } from './core/services/token.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
-    provideHttpClient(),
+    provideHttpClient(withInterceptors([authInterceptor])),
     provideAnimations(),
     provideToastr({
       // 🎯 Position
@@ -39,7 +40,6 @@ export const appConfig: ApplicationConfig = {
       toastClass: 'ngx-toastr custom-toast', // Classe pour personnalisation
 
       // 🎬 Animations d'entrée/sortie
-      // Options: 'fade', 'flyLeft', 'flyRight', 'slideDown', 'slideUp'
       easing: 'ease-in-out',
 
       // 📝 Messages

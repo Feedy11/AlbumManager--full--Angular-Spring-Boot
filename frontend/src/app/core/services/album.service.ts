@@ -18,41 +18,52 @@ export class AlbumService {
   private apiURL = environment.apiURL;
   private artisteURL: string = 'http://localhost:8081/Albums/artiste';
 
-  albums: Album[] = [];
-  Artistes: Artiste[] = [];
-
   constructor(private http: HttpClient) {}
 
   listAlbums(): Observable<Album[]> {
-    return this.http.get<Album[]>(this.apiURL).pipe(
+    return this.http.get<Album[]>(`${this.apiURL}/all`).pipe(
       map(albums => albums.map(album => this.formatAlbumDates(album)))
     );
   }
+
   listArtistes(): Observable<ArtisteWrapped> {
     return this.http.get<ArtisteWrapped>(this.artisteURL);
   }
-  consulterArtiste(id: number): Artiste | undefined {
-    return this.Artistes.find(artiste => artiste.idArtiste === id);
-  }
+
   ajouterAlbum(album: Album): Observable<Album> {
-    return this.http.post<Album>(this.apiURL, album, httpOptions);
+    return this.http.post<Album>(`${this.apiURL}/addalbum`, album, httpOptions);
   }
+
   supprimerAlbum(id: number): Observable<void> {
-    const url = `${this.apiURL}/${id}`;
-    return this.http.delete<void>(url, httpOptions);
+    return this.http.delete<void>(`${this.apiURL}/delalbum/${id}`, httpOptions);
   }
+
   consulterAlbum(id: number): Observable<Album> {
-    const url = `${this.apiURL}/${id}`;
-    return this.http.get<Album>(url).pipe(
+    return this.http.get<Album>(`${this.apiURL}/getbyid/${id}`).pipe(
       map(album => this.formatAlbumDates(album))
     );
   }
-  updateAlbum(a: Album): Observable<Album> {
-    const url = `${this.apiURL}/${a.idAlbum}`;
-    return this.http.put<Album>(url, a, httpOptions);
+
+  updateAlbum(album: Album): Observable<Album> {
+    return this.http.put<Album>(`${this.apiURL}/updatealbum`, album, httpOptions);
   }
 
-  //Méthode privée pour formater les dates
+  rechercherParArtiste(idArtiste: number): Observable<Album[]> {
+    return this.http.get<Album[]>(`${this.apiURL}/albumsart/${idArtiste}`);
+  }
+
+  rechercherParNom(nom: string): Observable<Album[]> {
+    return this.http.get<Album[]>(`${this.apiURL}/albumsbynom/${nom}`);
+  }
+
+  ajouterArtiste(art: Artiste): Observable<Artiste> {
+    return this.http.post<Artiste>(this.artisteURL, art, httpOptions);
+  }
+
+  updateArtiste(art: Artiste): Observable<Artiste> {
+    return this.http.put<Artiste>(`${this.artisteURL}/${art.idArtiste}`, art, httpOptions);
+  }
+
   private formatAlbumDates(album: Album): Album {
     if (album.dateSortie) {
       const date = new Date(album.dateSortie);
@@ -63,20 +74,4 @@ export class AlbumService {
     }
     return album;
   }
-
-  rechercherParArtiste(idArtiste: number): Observable<Album[]> {
-    const url = `${this.apiURL}/albumsartiste/${idArtiste}`;
-    return this.http.get<Album[]>(url);
-
-  }
-
-  ajouterArtiste( art: Artiste):Observable<Artiste>{
-return this.http.post<Artiste>(this.artisteURL,art, httpOptions);
-}
-updateArtiste(art: Artiste): Observable<Artiste> {
-  const url = `${this.artisteURL}/${art.idArtiste}`;
-  return this.http.put<Artiste>(url, art, httpOptions);
-}
-
-
 }

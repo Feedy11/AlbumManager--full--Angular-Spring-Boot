@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { HttpResponse } from '@angular/common/http';
 import { AuthService } from '../../../core/services/auth.service';
 import { User } from '../../../shared/components/models/user.model';
 
@@ -18,16 +19,18 @@ export class LoginComponent {
 
   constructor(private authService: AuthService, private router: Router) {}
 
-  onLoggedin() {
-    console.log('Utilisateur saisi:', this.user);
+onLoggedin() {
+  console.log('Utilisateur saisi:', this.user);
 
-    const isValidUser = this.authService.SignIn(this.user);
-
-    if (isValidUser) {
-      this.erreur = 0;
+  this.authService.login(this.user).subscribe({
+    next: (data) => {
+      let jwToken = data.headers.get('Authorization')!;
+      this.authService.saveToken(jwToken);
       this.router.navigate(['/']);
-    } else {
+    },
+    error: (err: any) => {
       this.erreur = 1;
     }
-  }
+  });
+}
 }
