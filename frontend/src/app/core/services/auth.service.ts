@@ -15,11 +15,25 @@ export class AuthService {
   public loggedUser: string | null = null;
   public isloggedIn: boolean = false;
   public roles: string[] | null = null;
-
+  public regitredUser: User = new User();
   private helper = new JwtHelperService();
 
   constructor(private router: Router, private http: HttpClient) { }
+  registerUser(user: User): Observable<HttpResponse<User>> {
+    return this.http.post<User>(this.apiURL + '/register', user, { observe: 'response' });
+  }
 
+  setRegistredUser(user: User): void {
+    this.regitredUser = user;
+  }
+
+  getRegistredUser(): User {
+    return this.regitredUser;
+  }
+
+  validateEmail(code: string): Observable<User> {
+    return this.http.get<User>(this.apiURL + '/verifyEmail/' + code);
+  }
   login(user: User): Observable<HttpResponse<any>> {
     return this.http.post(this.apiURL + '/login', user, { observe: 'response' });
   }

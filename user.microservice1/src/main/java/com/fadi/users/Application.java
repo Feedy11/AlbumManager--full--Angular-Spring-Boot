@@ -19,16 +19,15 @@ public class Application {
     SpringApplication.run(Application.class, args);
   }
 
-
 /*
   @PostConstruct
   void init_users() {
     userService.addRole(new Role(null, "ADMIN"));
     userService.addRole(new Role(null, "USER"));
 
-    userService.saveUser(new User(null, "admin", "123", true, null));
-    userService.saveUser(new User(null, "fadi", "123", true, null));
-    userService.saveUser(new User(null, "yassine", "123", true, null));
+    userService.saveUser(new User(null, "admin", "123", true, null,null));
+    userService.saveUser(new User(null, "fadi", "123", true, null,null));
+    userService.saveUser(new User(null, "yassine", "123", true, null,null));
 
     userService.addRoleToUser("admin", "ADMIN");
     userService.addRoleToUser("admin", "USER");

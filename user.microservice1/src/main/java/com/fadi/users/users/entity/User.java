@@ -1,5 +1,6 @@
 package com.fadi.users.users.entity;
 
+import com.fadi.users.users.entity.Role;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,21 +12,20 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "users")
 public class User {
 
   @Id
-  @GeneratedValue (strategy=GenerationType.IDENTITY)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long user_id;
 
   @Column(unique = true)
   private String username;
 
   private String password;
-
   private Boolean enabled;
+  private String email;
 
-  @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+  @ManyToMany(fetch = FetchType.EAGER)
   @JoinTable(
     name = "user_role",
     joinColumns = @JoinColumn(name = "user_id"),
@@ -33,4 +33,3 @@ public class User {
   )
   private List<Role> roles;
 }
-

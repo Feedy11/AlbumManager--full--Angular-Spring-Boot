@@ -7,6 +7,7 @@ import { RegisterComponent } from './features/auth/register/register.component';
 import { ListeArtisteComponent } from './features/liste-artiste/liste-artiste.component';
 import { ForbiddenComponent } from './features/forbidden/forbidden.component';
 import { produitGuard } from './core/guards/album.guard';
+import { VerifEmailComponent } from './features/auth/verif-email/verif-email.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'albums', pathMatch: 'full' },
@@ -22,6 +23,7 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
 
   { path: 'register', component: RegisterComponent },
+  { path: 'verifEmail', component: VerifEmailComponent},
 
   { path: 'app-forbidden', component: ForbiddenComponent },
 
